@@ -116,7 +116,6 @@ user_type = st.radio(
 
 # Wyświetlenie wyników po przesłaniu
 if st.button("Prześlij odpowiedzi"):
-    st.write("Dziękujemy za udział w ankiecie!")
     st.write("**Twoje oceny:**")
     for i, rating in enumerate(ratings):
         st.write(f"Wykres {titles[i]}: {rating}/5")
@@ -145,3 +144,4 @@ if st.button("Prześlij odpowiedzi"):
         st.error(f"Błąd operacji MongoDB: {e.details}")
     except Exception as e:
         st.error(f"Wystąpił nieoczekiwany błąd: {str(e)}")
+    st.write("Twoje wyniki zostały pomyślnie przesłane. Dziękujemy za udział w ankiecie! ")
