@@ -94,7 +94,7 @@ for i, file_name in enumerate(files):
     st.markdown('<div class="spacer"></br></br></br></div>', unsafe_allow_html=True)
 
 # Dodatkowe pytanie
-st.write("Na którym z wykresów najlepiej odwzorowany jest podział artykułów ze względu na tematykę?")
+st.header("Na którym z wykresów najlepiej odwzorowany jest podział artykułów ze względu na tematykę?")
 best_representation = st.radio(
     "Wybierz jeden wykres:",
     options=titles,
