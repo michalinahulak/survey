@@ -108,7 +108,7 @@ st.header("Jestem osobą:")
 user_type = st.radio(
     "Wybierz jeden typ:",
     options=[
-        "techniczną (programista, Data Scientist, AI specialist lub pokrewne)",
+        "techniczną (analityk danych, programista, Data Scientist, AI specialist lub pokrewne)",
         "nietechniczną"
     ],
     index=0
