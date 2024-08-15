@@ -133,8 +133,13 @@ if st.button("Prześlij odpowiedzi"):
 
     from pymongo.mongo_client import MongoClient
     from pymongo.server_api import ServerApi
-    with MongoClient(st.secrets["mongo"],server_api=ServerApi('1')) as client:
-        db = client.survey
-        collection = db.app
-        collection.insert_one(user_data)
-        st.session_state.inserted16 = True
+    try:
+        with MongoClient(st.secrets["mongo"], server_api=ServerApi('1')) as client:
+            db = client.survey
+            collection = db.app
+            collection.insert_one(user_data)
+            st.session_state.inserted16 = True
+    except pymongo.errors.OperationFailure as e:
+        st.error(f"Błąd operacji MongoDB: {e.details}")
+    except Exception as e:
+        st.error(f"Wystąpił nieoczekiwany błąd: {str(e)}")
