@@ -123,3 +123,18 @@ if st.button("Prześlij odpowiedzi"):
 
     # Zapisz odpowiedzi do pliku CSV
     save_to_csv({'ratings': ratings, 'best_representation': best_representation, 'user_type': user_type})
+
+    # Przygotowanie danych do zapisania w MongoDB
+    user_data = {
+        'ratings': ratings,
+        'best_representation': best_representation,
+        'user_type': user_type
+    }
+
+    from pymongo.mongo_client import MongoClient
+    from pymongo.server_api import ServerApi
+    with MongoClient(st.secrets["mongo"],server_api=ServerApi('1')) as client:
+        db = client.survey
+        collection = db.app
+        collection.insert_one(user_data)
+        st.session_state.inserted16 = True
