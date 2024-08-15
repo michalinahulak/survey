@@ -16,10 +16,10 @@ def save_to_csv(data):
         writer = csv.writer(file)
         if not file_exists:
             # Dodanie nagłówków, jeśli plik nie istnieje
-            headers = titles + ['best_model']
+            headers = titles + ['best_model', 'user_type']
             writer.writerow(headers)
         # Zapisywanie odpowiedzi
-        row = ratings + [data['best_representation']]
+        row = ratings + [data['best_representation'], data['user_type']]
         writer.writerow(row)
 
 # Ustawienie trybu wide
@@ -101,6 +101,17 @@ best_representation = st.radio(
     index=0
 )
 
+# Pytanie o typ użytkownika
+st.header("Jestem osobą:")
+user_type = st.radio(
+    "Wybierz jeden typ:",
+    options=[
+        "techniczną (programista, Data Scientist, AI specialist lub pokrewne)",
+        "nietechniczną"
+    ],
+    index=0
+)
+
 # Wyświetlenie wyników po przesłaniu
 if st.button("Prześlij odpowiedzi"):
     st.write("Dziękujemy za udział w ankiecie!")
@@ -108,6 +119,7 @@ if st.button("Prześlij odpowiedzi"):
     for i, rating in enumerate(ratings):
         st.write(f"Wykres {titles[i]}: {rating}/5")
     st.write(f"Najlepiej odwzorowany wykres: {best_representation}")
+    st.write(f"Typ użytkownika: {user_type}")
 
     # Zapisz odpowiedzi do pliku CSV
-    save_to_csv({'ratings': ratings, 'best_representation': best_representation})
+    save_to_csv({'ratings': ratings, 'best_representation': best_representation, 'user_type': user_type})
