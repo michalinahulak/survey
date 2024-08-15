@@ -1,0 +1,113 @@
+import streamlit as st
+import streamlit.components.v1 as components
+import os
+import csv
+
+# Ścieżka do pliku CSV
+csv_file_path = 'responses.csv'
+
+# Funkcja do zapisywania danych do CSV
+def save_to_csv(data):
+    # Sprawdzenie, czy plik już istnieje
+    file_exists = os.path.isfile(csv_file_path)
+
+    # Zapisywanie danych do pliku CSV
+    with open(csv_file_path, mode='a', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        if not file_exists:
+            # Dodanie nagłówków, jeśli plik nie istnieje
+            headers = titles + ['best_model']
+            writer.writerow(headers)
+        # Zapisywanie odpowiedzi
+        row = ratings + [data['best_representation']]
+        writer.writerow(row)
+
+# Ustawienie trybu wide
+st.set_page_config(layout="wide")
+
+# Lista plików HTML z wykresami
+files = [
+    "1_allegro_herbert-large-cased.html",
+    "2_intfloat_multilingual-e5-base.html",
+    "3_ipipan_silver-retriever-base-v1.1.html",
+    "4_llama_3_0_embeddings.html",
+    "5_sdadas_polish-roberta-large-v2.html"
+]
+
+# Tytuły wykresów odpowiadające plikom
+titles = [
+    "1. allegro/herbert-large-cased",
+    "2. intfloat/multilingual-e5-base",
+    "3. ipipan/silver-retriever-base-v1.1",
+    "4. llama_3_0_embeddings",
+    "5. sdadas/polish-roberta-large-v2"
+]
+
+st.markdown(
+    """
+    <style>
+    .justified-text {
+        text-align: justify;
+    }
+    </style>
+    """, unsafe_allow_html=True
+)
+
+# Wprowadzenie do ankiety
+st.title("Ankieta oceny wizualizacji danych")
+st.markdown("""
+<div class="justified-text">
+Dziękujemy za udział w naszej ankiecie, której celem jest ocena wizualizacji danych z różnych modeli tzw. "embeddingów". W uproszczeniu, teksty artykułów, które znamy z życia codziennego, zostały zamienione na reprezentacje liczbowe (embeddingi), a następnie odwzorowane na wykresie przy użyciu metody UMAP. 
+W efekcie, <strong>podobne tematycznie artykuły powinny znaleźć się blisko siebie na wykresie, a te różniące się tematycznie — w większej odległości.</strong> Chcemy, abyś pomógł nam ocenić, który z przedstawionych wykresów najlepiej oddaje te relacje.
+</br></br>
+<strong>Oceń reprezentację:</strong> Na każdym wykresie zobaczysz punkty, które reprezentują różne artykuły. 
+Oceń, czy artykuły z podobnych tematów (np. artykuły sportowe) znajdują się blisko siebie, tworząc spójne grupy. Na każdym wykresie przejrzyj minimum 3 różne obszary. Jeden wykres przeglądaj maksymalnie 1 minutę.
+
+Każdy wykres oceń według poniższej skali:
+
+1 - bardzo źle (na wykresie znalazł_m powyżej 5 niespójnych artykułów lub podobne tematy artykułów leżą daleko od siebie)  
+2 - źle (na wykresie znalazł_m od 4 do 5 niespójnych artykułów)  
+3 - średnio (na wykresie znalazł_m od 2 do 3 niespójnych artykułów)  
+4 - dobrze (na wykresie znalazł_m 1 niespójny artykuł)  
+5 - bardzo dobrze (na wykresie nie znalazł_m niespójnych artykułów)
+</div>
+""", unsafe_allow_html=True)
+
+# Tworzenie ankiety dla każdego wykresu
+ratings = []
+for i, file_name in enumerate(files):
+    st.header(f"Wykres: {titles[i]}")
+
+    # Wczytanie wykresu HTML z lokalnego folderu "wykresy"
+    file_path = os.path.join(file_name)
+    with open(file_path, 'r', encoding='utf-8') as f:
+        html_content = f.read()
+
+    # Wyświetlenie wykresu
+    st.components.v1.html(html_content, height=600)
+
+    # Prośba o ocenę wykresu
+    rating = st.slider(f"Oceń wykres {i + 1}", 1, 5, 3)
+    ratings.append(rating)
+
+    # Dodanie odstępu po wykresie
+    st.markdown('<div class="spacer"></br></br></br></div>', unsafe_allow_html=True)
+
+# Dodatkowe pytanie
+st.write("Na którym z wykresów najlepiej odwzorowany jest podział artykułów ze względu na tematykę?")
+best_representation = st.radio(
+    "Wybierz jeden wykres:",
+    options=titles,
+    index=0
+)
+
+# Wyświetlenie wyników po przesłaniu
+if st.button("Prześlij odpowiedzi"):
+    st.write("Dziękujemy za udział w ankiecie!")
+    st.write("**Twoje oceny:**")
+    for i, rating in enumerate(ratings):
+        st.write(f"Wykres {titles[i]}: {rating}/5")
+    st.write(f"Najlepiej odwzorowany wykres: {best_representation}")
+
+    # Zapisz odpowiedzi do pliku CSV
+    save_to_csv({'ratings': ratings, 'best_representation': best_representation})
