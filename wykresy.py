@@ -8,8 +8,6 @@ import pymongo
 # Ścieżka do pliku CSV
 csv_file_path = 'responses.csv'
 
-# Link do filmiku na YouTube
-youtube_link = "https://youtu.be/8QDNFvJfY7Y"
 
 # Funkcja do zapisywania danych do CSV
 def save_to_csv(data):
@@ -80,8 +78,8 @@ Każdy wykres oceń według poniższej skali:
 
 # Wyświetlenie filmu
 video_html = f"""
-    <div style="display: flex; justify-content: center;">
-        <iframe width="640" height="360" src="{youtube_link}" 
+    <div style="display: flex; justify-content: left;">
+        <iframe width="640" height="360" src="{https://youtu.be/8QDNFvJfY7Y}" 
         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen></iframe>
     </div>
