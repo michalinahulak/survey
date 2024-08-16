@@ -79,7 +79,7 @@ Każdy wykres oceń według poniższej skali:
 # Wyświetlenie filmu
 video_html = f"""
     <div style="display: flex; justify-content: left;">
-        <iframe width="640" height="360" src="https://youtu.be/8QDNFvJfY7Y?si=wNwTJV_A_rgltrdS" 
+        <iframe width="640" height="360" src="https://www.youtube.com/embed/8QDNFvJfY7Y?si=kgfPpsn5NcrZ39ep" 
         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen></iframe>
     </div>
