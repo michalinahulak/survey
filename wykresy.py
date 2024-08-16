@@ -79,7 +79,7 @@ Każdy wykres oceń według poniższej skali:
 # Wyświetlenie filmu
 video_html = f"""
     <div style="display: flex; justify-content: left;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/8QDNFvJfY7Y?si=kgfPpsn5NcrZ39ep&amp;controls=0&amp;start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/8QDNFvJfY7Y?si=kgfPpsn5NcrZ39ep&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 """
 
