@@ -79,7 +79,7 @@ Każdy wykres oceń według poniższej skali:
 """, unsafe_allow_html=True)
 
 # Wyświetlenie filmiku na początku strony
-st.video(youtube_link)
+st.video(youtube_link, start_time=0, height=360, width=640)
 
 # Tworzenie ankiety dla każdego wykresu
 ratings = []
