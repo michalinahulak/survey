@@ -78,8 +78,17 @@ Każdy wykres oceń według poniższej skali:
 </div>
 """, unsafe_allow_html=True)
 
-# Wyświetlenie filmiku na początku strony
-st.video(youtube_link, start_time=0, height=360, width=640)
+# Wyświetlenie filmu
+video_html = f"""
+    <div style="display: flex; justify-content: center;">
+        <iframe width="640" height="360" src="{youtube_link}" 
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen></iframe>
+    </div>
+"""
+
+# Wyświetlenie filmiku
+st.markdown(video_html, unsafe_allow_html=True)
 
 # Tworzenie ankiety dla każdego wykresu
 ratings = []
