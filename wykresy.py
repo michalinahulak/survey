@@ -8,6 +8,9 @@ import pymongo
 # Ścieżka do pliku CSV
 csv_file_path = 'responses.csv'
 
+# Link do filmiku na YouTube
+youtube_link = "https://youtu.be/8QDNFvJfY7Y"
+
 # Funkcja do zapisywania danych do CSV
 def save_to_csv(data):
     # Sprawdzenie, czy plik już istnieje
@@ -74,6 +77,9 @@ Każdy wykres oceń według poniższej skali:
 5 - bardzo dobrze (na wykresie nie znalazł_m niespójnych artykułów)
 </div>
 """, unsafe_allow_html=True)
+
+# Wyświetlenie filmiku na początku strony
+st.video(youtube_link)
 
 # Tworzenie ankiety dla każdego wykresu
 ratings = []
