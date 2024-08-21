@@ -46,6 +46,14 @@ titles = [
     "5. sdadas/polish-roberta-large-v2"
 ]
 
+titles_numerate = [
+    "model 1",
+    "model 2",
+    "model 3",
+    "model 4",
+    "model 5"
+]
+
 st.markdown(
     """
     <style>
@@ -91,7 +99,7 @@ st.markdown(video_html, unsafe_allow_html=True)
 # Tworzenie ankiety dla każdego wykresu
 ratings = []
 for i, file_name in enumerate(files):
-    st.header(f"Wykres: {titles[i]}")
+    st.header(f"Wykres: {titles_numerate[i]}")
 
     # Wczytanie wykresu HTML z lokalnego folderu "wykresy"
     file_path = os.path.join(file_name)
@@ -112,7 +120,7 @@ for i, file_name in enumerate(files):
 st.header("Na którym z wykresów najlepiej odwzorowany jest podział artykułów ze względu na tematykę?")
 best_representation = st.radio(
     "Wybierz jeden wykres:",
-    options=titles,
+    options=titles_numerate,
     index=0
 )
 
