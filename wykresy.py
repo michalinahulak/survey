@@ -95,14 +95,14 @@ Oceń, czy artykuły z podobnych tematów (np. artykuły sportowe) znajdują si�
 """, unsafe_allow_html=True)
 
 # Wyświetlenie filmu
-video_html = f"""
-    <div style="display: flex; justify-content: left;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/8QDNFvJfY7Y?si=kgfPpsn5NcrZ39ep&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
-"""
+# video_html = f"""
+#     <div style="display: flex; justify-content: left;">
+#         <iframe width="560" height="315" src="https://www.youtube.com/embed/8QDNFvJfY7Y?si=kgfPpsn5NcrZ39ep&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+#     </div>
+# """
 
-# Wyświetlenie filmiku
-st.markdown(video_html, unsafe_allow_html=True)
+# # Wyświetlenie filmiku
+# st.markdown(video_html, unsafe_allow_html=True)
 
 st.markdown('<div class="spacer"></br></div>', unsafe_allow_html=True)
 
