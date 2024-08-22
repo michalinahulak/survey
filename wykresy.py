@@ -104,7 +104,7 @@ video_html = f"""
 # Wyświetlenie filmiku
 st.markdown(video_html, unsafe_allow_html=True)
 
-st.markdown('<div class="spacer"></br></br></br></div>', unsafe_allow_html=True)
+st.markdown('<div class="spacer"></br></div>', unsafe_allow_html=True)
 
 # Tworzenie ankiety dla każdego wykresu
 ratings = []
