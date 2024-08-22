@@ -110,7 +110,7 @@ st.markdown(video_html, unsafe_allow_html=True)
 # Tworzenie ankiety dla każdego wykresu
 ratings = []
 for i, file_name in enumerate(files):
-    st.header(f"Wykres: {titles_numerate[i]}")
+    st.header(f"{titles_numerate[i]}")
 
     # Wczytanie wykresu HTML z lokalnego folderu "wykresy"
     file_path = os.path.join(file_name)
@@ -162,7 +162,7 @@ user_type = st.radio(
 if st.button("Prześlij odpowiedzi"):
     st.header("**Twoje oceny:**")
     for i, rating in enumerate(ratings):
-        st.write(f"Wykres {titles[i]}: {rating}/5")
+        st.write(f"Wykres {titles[i]}: {rating}")
     st.write(f"Najlepiej odwzorowany wykres: {best_representation}")
     st.write(f"Typ użytkownika: {user_type}")
 
