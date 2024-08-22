@@ -54,6 +54,15 @@ titles_numerate = [
     "model 5"
 ]
 
+ratings = []
+rating_options = [
+    "model bezbłędny",
+    "1 błąd",
+    "2-3 błędy",
+    "4-5 błędy",
+    "powyżej 5 błędów"
+]
+
 st.markdown(
     """
     <style>
@@ -72,15 +81,16 @@ Dziękujemy za udział w naszej ankiecie, której celem jest ocena wizualizacji 
 W efekcie, <strong>podobne tematycznie artykuły powinny znaleźć się blisko siebie na wykresie, a te różniące się tematycznie — w większej odległości.</strong> Chcemy, abyś pomógł nam ocenić, który z przedstawionych wykresów najlepiej oddaje te relacje.
 </br></br>
 <strong>Oceń reprezentację:</strong> Na każdym wykresie zobaczysz punkty, które reprezentują różne artykuły. 
-Oceń, czy artykuły z podobnych tematów (np. artykuły sportowe) znajdują się blisko siebie, tworząc spójne grupy. Na każdym wykresie przejrzyj minimum 3 różne obszary. Jeden wykres przeglądaj maksymalnie 1 minutę.
+Oceń, czy artykuły z podobnych tematów (np. artykuły sportowe) znajdują się blisko siebie, tworząc spójne grupy.  
 
-Każdy wykres oceń według poniższej skali:
+**Każdy wykres przeglądaj przez 1 minutę i oceń według poniższej skali:**
 
-1 - bardzo źle (na wykresie znalazł_m powyżej 5 niespójnych artykułów lub podobne tematy artykułów leżą daleko od siebie)  
-2 - źle (na wykresie znalazł_m od 4 do 5 niespójnych artykułów)  
-3 - średnio (na wykresie znalazł_m od 2 do 3 niespójnych artykułów)  
-4 - dobrze (na wykresie znalazł_m 1 niespójny artykuł)  
-5 - bardzo dobrze (na wykresie nie znalazł_m niespójnych artykułów)
+* model bezbłędny
+* 1 błąd
+* 2-3 błędy
+* 4-5 błędy
+* powyżej 5 błędów
+
 </div>
 """, unsafe_allow_html=True)
 
@@ -109,8 +119,12 @@ for i, file_name in enumerate(files):
     # Wyświetlenie wykresu
     st.components.v1.html(html_content, height=600)
 
+    # # Prośba o ocenę wykresu
+    # rating = st.slider(f"Oceń wykres {i + 1}", 1, 5, 3)
+    # ratings.append(rating)
+
     # Prośba o ocenę wykresu
-    rating = st.slider(f"Oceń wykres {i + 1}", 1, 5, 3)
+    rating = st.radio(f"Oceń wykres {i + 1}", options=rating_options, index=0)
     ratings.append(rating)
 
     # Dodanie odstępu po wykresie
