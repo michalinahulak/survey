@@ -84,7 +84,7 @@ W efekcie, <strong>podobne tematycznie artykuły powinny znaleźć się blisko s
 <strong>Oceń reprezentację:</strong> Na każdym wykresie zobaczysz punkty, które reprezentują różne artykuły. 
 Oceń, czy artykuły z podobnych tematów (np. artykuły sportowe) znajdują się blisko siebie, tworząc spójne grupy.  
 </br>
-**Każdy wykres przeglądaj przez 1 minutę i oceń według poniższej skali:**
+<strong>Każdy wykres przeglądaj przez 1 minutę i oceń według poniższej skali:</strong>
 
 * model bezbłędny
 * 1 błąd
