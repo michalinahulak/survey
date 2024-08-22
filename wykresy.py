@@ -3,6 +3,7 @@ import streamlit.components.v1 as components
 import os
 import csv
 import pymongo
+import time
 
 
 # Ścieżka do pliku CSV
@@ -82,7 +83,7 @@ W efekcie, <strong>podobne tematycznie artykuły powinny znaleźć się blisko s
 </br></br>
 <strong>Oceń reprezentację:</strong> Na każdym wykresie zobaczysz punkty, które reprezentują różne artykuły. 
 Oceń, czy artykuły z podobnych tematów (np. artykuły sportowe) znajdują się blisko siebie, tworząc spójne grupy.  
-
+</br>
 **Każdy wykres przeglądaj przez 1 minutę i oceń według poniższej skali:**
 
 * model bezbłędny
@@ -122,6 +123,14 @@ for i, file_name in enumerate(files):
     # # Prośba o ocenę wykresu
     # rating = st.slider(f"Oceń wykres {i + 1}", 1, 5, 3)
     # ratings.append(rating)
+
+    # Przycisk do uruchomienia timera
+    if st.button(f"Start 1-minutowego odliczania dla wykresu {i + 1}"):
+        with st.empty():
+            for seconds in range(60, 0, -1):
+                st.write(f"Pozostały czas: {seconds} sekund")
+                time.sleep(1)
+            st.write("Czas minął! Możesz teraz ocenić wykres.")
 
     # Prośba o ocenę wykresu
     rating = st.radio(f"Oceń wykres {i + 1}", options=rating_options, index=0)
