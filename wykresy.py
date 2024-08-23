@@ -97,7 +97,7 @@ Oceń, czy artykuły z podobnych tematów (np. artykuły sportowe) znajdują si�
 # Wyświetlenie filmu
 video_html = f"""
     <div style="display: flex; justify-content: left;">
-        <iframe width="1280" height="688" src="https://www.youtube.com/embed/Qs8XsIo4aHI" title="Instrukcja wypełniania ankiety" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="640" height="320" src="https://www.youtube.com/embed/Qs8XsIo4aHI" title="Instrukcja wypełniania ankiety" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 """
 
