@@ -102,7 +102,7 @@ video_html = f"""
 """
 
 # Wyświetlenie filmiku
-st.markdown(video_html, unsafe_allow_html=True)
+st.markdown(video_html, unsafe_allow_html=False)
 
 st.markdown('<div class="spacer"></br></div>', unsafe_allow_html=True)
 
